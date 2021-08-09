@@ -3,8 +3,6 @@ var fs = require('fs');
 var path = require('path');
 
 http.createServer(function (request, response) {
-    console.log('request ', request.url);
-
     var filePath = '.' + request.url;
     if (filePath == './') {
         filePath = './index.html';
@@ -53,3 +51,4 @@ http.createServer(function (request, response) {
 }).listen(3000);
 
 console.log('Server running at http://127.0.0.1:3000/');
+console.log('Tests are running at http://127.0.0.1:3000/test.html');

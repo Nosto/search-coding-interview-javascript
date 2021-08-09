@@ -1,4 +1,5 @@
 import { renderSidebar, renderContent, bindFacetChange } from './rendering.js'
+import { tokenize } from './helpers.js'
 
 export async function loadData() {
     const products = await fetch('https://itunes.apple.com/us/rss/topalbums/limit=100/json').then(v => v.json())
@@ -12,6 +13,8 @@ export function executeSearch(searchQuery, filters, data) {
 
     const result = search(searchQuery, filters, data)
 
+    console.log(`Found ${result.documents.length} results`, result)
+
     renderSidebar(result.facets, filters)
     renderContent(result.documents)
     bindFacetChange(newFilters => {
@@ -21,8 +24,8 @@ export function executeSearch(searchQuery, filters, data) {
 
 export function search(searchQuery, filters, data) {
     return {
-        // TODO: return only relevant documents
-        documents: data.documents,
+        // TODO: filter by selected facets
+        documents: filterDocumentsByQuery(data.documents, searchQuery),
         // TODO: generate facets from matched documents data
         facets: {
             price: [
@@ -48,4 +51,18 @@ export function search(searchQuery, filters, data) {
         }
         
     }
+}
+
+export function filterDocumentsByQuery(documents, searchQuery) {
+    const queryWords = tokenize(searchQuery)
+
+    return documents.filter(document => {
+        const documentWords = new Set([
+            document['im:name'].label,
+            document['im:artist'].label,
+            document.category.attributes.label
+        ].map(tokenize).flat())
+
+        return queryWords.every(word => documentWords.has(word))
+    })
 }

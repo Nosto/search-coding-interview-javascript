@@ -6,3 +6,11 @@ export function escapeHtml(unsafe) {
          .replace(/"/g, "&quot;")
          .replace(/'/g, "&#039;");
 }
+
+export function tokenize(value) {
+    return value
+        .toLowerCase()
+        .split(/[ -./\\()"',;<>~!@#$%^&*|+=[\]{}`~?:]+/)
+        .filter((v) => v !== '')
+        .map(v => v.replace(/s$/g,''))
+}
