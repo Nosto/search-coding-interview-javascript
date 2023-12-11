@@ -18,8 +18,9 @@ Don't worry about browser compatibility - if it runs on the latest version of Go
 ---
 **NOTE**
 
-There is [js/search.test.js](js/search.test.js) file with tests that cover most of required functionality. You can run tests
-using `npm test`.
+There is [js/search.test.js](js/search.test.js) file with tests that cover most of required functionality. You can run
+tests using `npm test`. Make sure to run tests using
+the [`--experimental-vm-modules` flag for node](https://jestjs.io/docs/ecmascript-modules).
 
 ---
 
