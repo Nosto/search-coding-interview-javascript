@@ -1,9 +1,4 @@
-import { search } from './search.js'
-
-const {
-    core: {describe, it, expect, run},
-    prettify,
-} = window.jestLite;
+import {search} from './search.js'
 
 const doc1 = {
     id: {
@@ -192,5 +187,3 @@ describe('search', () => {
         })
     })
 })
-
-prettify.toHTML(run(), document.body)

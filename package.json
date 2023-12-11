@@ -1,0 +1,26 @@
+{
+  "name": "search-coding-interview-javascript",
+  "version": "1.0.0",
+  "description": "Your challenge is to finish this web app which lists top 100 music albums from iTunes with search and filter functionality.",
+  "main": "dev-server.js",
+  "type": "module",
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Nosto/search-coding-interview-javascript.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nosto/search-coding-interview-javascript/issues"
+  },
+  "homepage": "https://github.com/Nosto/search-coding-interview-javascript#readme",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "jest": {
+    "transform": {}
+  }
+}
